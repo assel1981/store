@@ -24,5 +24,5 @@ from products.views import products
 app_name = 'products'
 
 urlpatterns = [
-    path('test/', products, name='index'),
+    path('/', products, name='index'),
 ]
