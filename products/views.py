@@ -20,34 +20,17 @@ class ProductsListView(ListView):
     model = Product
     template_name = "products/products.html"
     paginate_by = 3
+
     def get_queryset(self):
         queryset = super(ProductsListView, self).get_queryset()
         category_id = self.kwargs.get('category_id')
         return queryset.filter(categories_id=category_id) if category_id else queryset
-
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(ProductsListView, self).get_context_data()
         context['title'] = 'Store - Каталог'
         context['categories'] = ProductCategory.objects.all()
         return context
-
-
-# def products(request, category_id=None, page_number=1):
-#     products = Product.objects.filter(categories_id=category_id) if category_id else Product.objects.all().order_by('name')
-#     per_page = 3
-#     paginator = Paginator(products, per_page)
-#     products_paginator = paginator.page(page_number)
-#
-#     context = {
-#         'title': 'Store - Каталог',
-#         'products': products_paginator,
-#         # 'products_paginator': products_paginator,
-#         'categories': ProductCategory.objects.all(),
-#         'active': True,
-#     }
-#
-#     return render(request, "products/products.html", context)
 
 
 @login_required
