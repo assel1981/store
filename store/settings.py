@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import _locale
+import os
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "store.settings")
 
 _locale._getdefaultlocale = (lambda *args: ['en_US', 'utf8'])
 
@@ -41,6 +44,8 @@ INSTALLED_APPS = [
     'django_dump_load_utf8',
     'products',
     'users',
+    'rest_framework',
+    'api'
 ]
 
 MIDDLEWARE = [
