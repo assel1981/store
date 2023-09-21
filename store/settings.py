@@ -137,3 +137,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # users
 AUTH_USER_MODEL = 'users.User'
 LOGIN_URL = '/users/login/'
+
+
+# django RESTframework
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 2
+}
